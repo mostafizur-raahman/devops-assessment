@@ -25,6 +25,7 @@ jobs:
                   host: ${{ secrets.AWS_HOST }}
                   username: ${{ secrets.AWS_USER }}
                   key: ${{ secrets.AWS_SSH_KEY }}
+                  debug: true
                   script: |
                       cd /home/ubuntu/devops-assessment
                       chmod +x deployment/deploy.sh
