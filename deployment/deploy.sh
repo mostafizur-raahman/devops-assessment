@@ -5,11 +5,11 @@ echo "Starting deployment..."
 
 cd /home/ubuntu/devops-assessment || exit 1
 
-echo "🔄 Syncing with GitHub..."
+echo "Force-syncing with GitHub..."
 git fetch --all
 git reset --hard origin/master
 
-echo "⚙️ Generating environment variables..."
+echo "Generating environment variables..."
 cat <<EOF > .env
 COMPOSE_PROJECT_NAME=devops-assessment
 APP_ENV=production
@@ -24,13 +24,13 @@ HEALTHCHECK_TIMEOUT=3s
 HEALTHCHECK_RETRIES=3
 EOF
 
-echo "🛑 Stopping old containers..."
+echo "Stopping old containers..."
 docker compose down
 
-echo "🏗️ Building and starting containers..."
+echo "Building and starting containers..."
 docker compose up -d --build
 
-echo "🧹 Cleaning up unused Docker images..."
+echo "Cleaning up unused Docker images..."
 docker image prune -f
 
 echo "✅ Deployment successful!"
