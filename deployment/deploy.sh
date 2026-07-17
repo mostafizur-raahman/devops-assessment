@@ -1,15 +1,15 @@
 #!/bin/bash
 set -e
 
-echo "🚀 Starting deployment..."
+echo "Starting deployment..."
 
 cd /home/ubuntu/devops-assessment || exit 1
 
-echo "📥 Pulling latest code..."
+echo "Pulling latest code..."
 git pull origin master
 
 
-echo "⚙️ Generating environment variables..."
+echo "Generating environment variables..."
 cat <<EOF > .env
 COMPOSE_PROJECT_NAME=devops-assessment
 APP_ENV=production
@@ -38,5 +38,5 @@ docker compose up -d --build
 echo "🧹 Cleaning up unused Docker images..."
 docker image prune -f
 
-echo "✅ Deployment successful!"
+echo "Deployment successful!"
 docker compose ps
